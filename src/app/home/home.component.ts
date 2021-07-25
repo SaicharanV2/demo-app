@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { DataService } from '../data.service';
 import { DemoAppService } from '../demo-app.service';
 
 @Component({
@@ -10,7 +12,9 @@ export class HomeComponent implements OnInit {
   articleList: any;
   weatherData: any;
 
-  constructor(private demoAppService: DemoAppService) { }
+  constructor(private demoAppService: DemoAppService,
+    private dataService: DataService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.demoAppService.getAllArticles().subscribe(
@@ -31,7 +35,18 @@ export class HomeComponent implements OnInit {
   getArticle(data: string) {
     this.demoAppService.getArticle(data).subscribe(
       (result: any) => {
-        const articleObj = result;
-    })
+        this.dataService.article = result.article;
+        this.router.navigate(['article']);
+      })
+  }
+  onLogin(){
+    this.dataService.doSignup = false;
+    this.router.navigate(['login']);
+  }
+
+  onSignup(){
+    this.dataService.doSignup = true;
+    this.router.navigate(['signup']);
+
   }
 }

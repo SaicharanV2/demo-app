@@ -1,0 +1,43 @@
+<div class="header">
+    <h2> Articles.co.in </h2>
+</div>
+<div class="container" id="container">
+    <div class="form-container">
+        <div *ngIf="doSignup">
+            <form (submit)="onSignup()">
+                <h1>Create Account</h1>
+                <input type="text" placeholder="Name" [formControl]="userName" /><br>
+                <input type="email" placeholder="Email" [formControl]="email" /><br>
+                <input type="password" placeholder="Password" [formControl]="password" /><br>
+                <button>Sign Up</button>
+            </form>
+        </div>
+
+        <div *ngIf="!doSignup">
+            <form (submit)="onLogin()">
+                <h1> Login</h1>
+                <input type="text" placeholder="Email" [formControl]="email" /><br>
+                <input type="password" placeholder="Password" [formControl]="password" /><br>
+                <button>Login</button>
+            </form>
+        </div>
+
+
+        <div *ngIf="doSignup && userName.touched && userName.errors?.required">
+            <p style="color:red;"><b>User Id is Required</b></p>
+        </div>
+
+        <div *ngIf="email.touched && email.errors?.required">
+            <p style="color:red;"><b>Email Id is Required</b></p>
+        </div>
+
+        <div *ngIf="password.touched && password.errors?.required">
+            <p style="color:red;"><b>Password is Required</b></p>
+        </div>
+
+
+        <div *ngIf="password.touched && password.errors?.minlength">
+            <p style="color:red;"><b>Name must be at least 8 characters long.</b></p>
+        </div>
+
+    </div>

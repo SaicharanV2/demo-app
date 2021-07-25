@@ -1,0 +1,11 @@
+<div class="header">
+    <div>
+        <h1> Articles.co.in </h1>
+        <div><b>Author: {{article?.author?.username}}</b></div>
+        <div><b> Created at:</b> {{article?.createdAt | date:'medium'}} </div>
+        <div> <b>Created at:</b> {{article?.updatedAt | date:'medium'}} </div>
+        <div><b>Title:</b> {{article.title}}</div>
+        <div><b>Body:</b> {{article.body}}</div><br>
+        <div><b>description:</b> {{article.description}}</div>
+    </div>
+</div>

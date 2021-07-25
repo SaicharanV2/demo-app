@@ -7,9 +7,9 @@
             </h1>
         </div>
         <a href="#settings" class="button ui-button">Settings</a>
-        <a href="#signin" class="button ui-button">Sign in</a>
+        <a (click)='onLogin()' class="button ui-button">Sign in</a>
         <a href="#" class="button ui-button">What's New</a>
-        <a href="#signin" class="button signup-button">Sign up</a>
+        <a (click)='onSignup()' class="button signup-button">Sign up</a>
     </div>
     <div>
         <hr>
@@ -33,7 +33,7 @@
                     <!--  author details -->
                     <div class="div-width">
                         <span class="author-details">
-                            <img src={{article.author.image}} alt="Stickman" width="30px" height="30px">
+                            <img *ngIf="article.author.image" src={{article.author.image}}  width="30px" height="30px">
                             <p> Author: {{article?.author?.username}} </p>
                         </span>
                         <!--  article details-->
