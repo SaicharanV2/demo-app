@@ -1,0 +1,59 @@
+<div>
+    <!-- header section -->
+    <div class="header">
+        <div>
+            <h1>
+                Articles.co.in
+            </h1>
+        </div>
+        <a href="#settings" class="button ui-button">Settings</a>
+        <a href="#signin" class="button ui-button">Sign in</a>
+        <a href="#" class="button ui-button">What's New</a>
+        <a href="#signin" class="button signup-button">Sign up</a>
+    </div>
+    <div>
+        <hr>
+        <span class="weather" *ngIf="weatherData">
+            <b> {{weatherData?.name}} :&nbsp; </b>
+            <i class="pi pi-cloud">
+                Temperature: {{ &nbsp; weatherData?.main?.temp - 273.15 | number:'1.2-2'}}&#8451;
+
+            </i> & Condition: {{&nbsp; weatherData?.weather['0'].description}}
+            <hr>
+        </span>
+    </div>
+
+    <!-- body section -->
+    <div>
+        <p-table [value]="articleList" [paginator]="true"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rows]="6"
+            [showCurrentPageReport]="true">
+            <ng-template pTemplate="body" let-article>
+                <div style="width:100%;">
+                    <!--  author details -->
+                    <div class="div-width">
+                        <span class="author-details">
+                            <img src={{article.author.image}} alt="Stickman" width="30px" height="30px">
+                            <p> Author: {{article?.author?.username}} </p>
+                        </span>
+                        <!--  article details-->
+                        <h2>{{article.title}}</h2>
+                        <p>{{article.body}}</p><br>
+                        <a class="link" (click)="getArticle(article?.slug)"> read more.. </a>
+                    </div>
+
+                    <div class="div-width">
+                        <img src="./assets/images/article.jpg" alt="article" height="125px" width="30%">
+                    </div>
+                </div>
+            </ng-template>
+        </p-table>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Powered by <a href="#" target="_blank">Articles.co.in</a></p>
+    </footer>
+
+</div>
